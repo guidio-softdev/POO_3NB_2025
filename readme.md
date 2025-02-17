@@ -16,6 +16,10 @@ O objetivo deste projeto é que o aluno complete a implementação criando a cla
     - **Métodos de acesso**: Getters e setters para o atributo `faces`.
     - **Construtores**: Construtores para inicializar o dado com um número específico de faces.
 
+O diagrama de classes abaixo ilustra a estrutura do projeto:
+
+![Diagrama de classes](./images/uml.png)
+
 ## Como Rodar o Projeto Spring
 
 Para rodar o projeto Spring, siga os passos abaixo:
