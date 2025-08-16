@@ -12,35 +12,38 @@ import java.util.List;
 public class DadoController {
 
     private List<Dado> dados = new ArrayList<>(List.of(
-    new Dado(6),
-    new Dado(20)
+        new Dado(6),
+        new Dado(20)
     ));
+    private Jogador jogador = new Jogador("João");
 
     @GetMapping("/")
     public String home(Model model) {
-    model.addAttribute("dados", dados);
-         return "index";
-     }
+         model.addAttribute("jogador", jogador);
+         model.addAttribute("dados", dados);
+        return "index";
+    }
 
      @GetMapping("/rolar")
      public String rolarDado(@RequestParam int faces, Model model) {
          Dado dado = new Dado(faces);
-         int resultado = dado.rolar();
+         int resultado = jogador.rolarDado(dado);
          model.addAttribute("dados", dados);
          model.addAttribute("resultado", resultado);
+         model.addAttribute("jogador", jogador);
          return "index";
      }
 
-     @GetMapping("/novo-dado")
-     public String novoDadoForm() {
-         return "novo-dado";
-     }
+    @GetMapping("/novo-dado")
+    public String novoDadoForm() {
+        return "novo-dado";
+    }
 
-     @PostMapping("/novo-dado")
-     public String criarDado(@RequestParam int faces) {
-         if (faces > 0) {
-             dados.add(new Dado(faces));
-         }
-         return "redirect:/";
-     }
+    @PostMapping("/novo-dado")
+    public String criarDado(@RequestParam int faces) {
+        if (faces > 0) {
+            dados.add(new Dado(faces));
+        }
+        return "redirect:/";
+    }
 }
