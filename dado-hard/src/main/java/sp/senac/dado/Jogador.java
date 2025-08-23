@@ -18,6 +18,7 @@ public class Jogador {
             perderVida();
         }
         return valor;
+
     }
 
     public void ganharVida() {
@@ -33,10 +34,9 @@ public class Jogador {
     }
 
     public boolean estaVivo() {
-        if (vidas >= 1) {
-            return true;
-        }
-        return false;
+
+        return vidas >0;
+
     }
 
     public String getNome() {
