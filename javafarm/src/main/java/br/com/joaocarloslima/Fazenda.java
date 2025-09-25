@@ -17,16 +17,23 @@ public class Fazenda {
     }
 
     public void plantarCenoura(int x, int y) {
+
         if (celeiro.getQtdeCenouras() != 0) {
             Terreno terreno = getTerreno(x, y);
+            if (terreno.estaOcupado()) {
+                throw new RuntimeException("Este terreno já está ocupado!");
+            }
             terreno.plantar(new Cenoura());
             celeiro.consumirCenoura();
         }
     }
 
     public void plantarBatata(int x, int y) {
-        if (celeiro.getQtdeCenouras() != 0) {
+        if (celeiro.getQtdeBatatas() != 0) {
             Terreno terreno = getTerreno(x, y);
+            if (terreno.estaOcupado()) {
+                throw new RuntimeException("Este terreno já está ocupado!");
+            }
             terreno.plantar(new Batata());
             celeiro.consumirBatata();
         }
@@ -35,6 +42,9 @@ public class Fazenda {
     public void plantarMorango(int x, int y) {
         if (celeiro.getQtdeMorangos() != 0) {
             Terreno terreno = getTerreno(x, y);
+            if (terreno.estaOcupado()) {
+                throw new RuntimeException("Este terreno já está ocupado!");
+            }
             terreno.plantar(new Morango());
             celeiro.consumirMorango();
         }

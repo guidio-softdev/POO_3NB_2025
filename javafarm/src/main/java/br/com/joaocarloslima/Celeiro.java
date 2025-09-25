@@ -3,9 +3,9 @@ package br.com.joaocarloslima;
 public class Celeiro {
 
     private int capacidade = 169;
-    private int qtdeBatatas = 1;
-    private int qtdeMorangos = 1;
-    private int qtdeCenouras = 1;
+    private int qtdeBatatas = 30;
+    private int qtdeMorangos = 30;
+    private int qtdeCenouras = 30;
 
 
     public void armazenarBatata() {
@@ -55,7 +55,8 @@ public class Celeiro {
     }
 
     public double getOcupacao() {
-        return ((qtdeBatatas + qtdeCenouras + qtdeMorangos) / capacidade);
+        double totalItens = qtdeBatatas + qtdeCenouras + qtdeMorangos;
+        return totalItens/capacidade;
     }
 
     public boolean celeiroCheio() {

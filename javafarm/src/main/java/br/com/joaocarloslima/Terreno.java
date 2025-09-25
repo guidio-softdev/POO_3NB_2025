@@ -49,9 +49,9 @@ public class Terreno {
         }
     }
 
-    public boolean estaOcupado() {
-        return batata != null || morango != null || cenoura != null;
-    }
+        public boolean estaOcupado() {
+            return batata != null || morango != null || cenoura != null;
+        }
 
     public Batata getBatata() {
         return batata;
