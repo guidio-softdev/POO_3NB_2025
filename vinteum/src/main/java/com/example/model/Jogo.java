@@ -4,7 +4,7 @@ public class Jogo {
 
     protected Monte monte = new Monte();
     protected Jogador jogador = new Jogador();
-    protected Jogador computador = new Computador();
+    protected Computador computador = new Computador();
 
     public Jogo() {
         monte.embaralhar();
@@ -18,41 +18,23 @@ public class Jogo {
         jogador.receberCarta(carta);
         return carta;
     }
-    public boolean acabou(){
-        if (jogador.parou() && computador.parou()){
-            return true;
-        }
-        if (jogador.getPontos() >= 21){
-            return true;
-        }
-        if (computador.getPontos() >= 21){
-            return true;
-        }
-        return false;
+
+    public boolean acabou() {
+        var jogadorEstourou = jogador.getPontos() > 21;
+        var computadorEstourou = computador.getPontos() > 21;
+        var osDoisPararam = jogador.parou() && computador.parou();
+
+        return osDoisPararam || jogadorEstourou || computadorEstourou;
     }
 
     public String resultado() {
-
-        if (jogador.getPontos() > 21 && computador.getPontos() > 21) {
-            return "Empate (ambos ultrapassaram 21!)";
-
-        } else if (jogador.getPontos() > 21) {
-           return "Você perdeu (ultrapassou 21!)";
-
-        } else if (computador.getPontos() > 21) {
-            return "Você venceu (computador ultrapassou 21!)";
-
-        } else {
-
-            if (jogador.getPontos() > computador.getPontos()) {
-                return "Você venceu (mais próximo de 21!)";
-            } else if (computador.getPontos() > jogador.getPontos()) {
-                return "Você perdeu (computador mais próximo de 21!)";
-            } else {
-                return"Empate (pontuação igual!)";
-            }
+        if (jogador.getPontos() == computador.getPontos() || (jogador.getPontos() > 21 && computador.getPontos() > 21)) {
+            return "Empate";
         }
-
+        if ((jogador.getPontos() > computador.getPontos() && jogador.getPontos() <=21) || computador.getPontos() > 21){
+            return "Venceu!";
+        }
+        return "Perdeu";
     }
 
     public Jogador getJogador() {

@@ -4,7 +4,7 @@ public class EstrategiaCautelosa implements EstrategiaDeParada{
 
     @Override
     public boolean deveParar(Jogador computador){
-        return computador.getPontos() >= 16;
+        return computador.getPontos() > 16;
     }
 
 }

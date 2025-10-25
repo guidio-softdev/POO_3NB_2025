@@ -12,7 +12,7 @@ public class Jogador {
     public void receberCarta(Carta carta) {
         if (!parou) {
             cartas.add(carta);
-            pontos += carta.getNumero();
+            pontos += carta.numero();
         }
     }
 

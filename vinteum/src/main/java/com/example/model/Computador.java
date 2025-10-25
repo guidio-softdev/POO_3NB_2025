@@ -7,21 +7,17 @@ public class Computador extends Jogador{
     private EstrategiaDeParada estrategia;
 
     public Computador() {
-        super();
-        escolherEstrategiaAleatoria();
+        this.estrategia = Math.random() < 0.5?
+                new EstrategiaAgressiva():
+                new EstrategiaCautelosa();
     }
 
-    private void escolherEstrategiaAleatoria() {
-        Random r = new Random();
-        if (r.nextBoolean()) estrategia = new EstrategiaCautelosa();
-        else estrategia = new EstrategiaAgressiva();
-    }
-
-    public void setEstrategia(EstrategiaDeParada e) {
-        this.estrategia = e;
-    }
-
-    public boolean deveParar() {
+    @Override
+    public boolean parou() {
         return estrategia.deveParar(this);
+    }
+
+    public EstrategiaDeParada getEstrategia() {
+        return estrategia;
     }
 }
